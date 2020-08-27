@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b84d5c213e634d31be1171e5132f4d95" Name="Diagram1">
+        <EntityTypeShape EntityType="PTTKHTModel.ChiTietDonNhapHang" Width="1.5" PointX="8.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTTKHTModel.ChiTietDonTraHangNCC" Width="1.5" PointX="11.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTTKHTModel.ChiTietHoaDon" Width="1.5" PointX="3" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTTKHTModel.Comment" Width="1.5" PointX="6" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTTKHTModel.DoiTacQuangCao" Width="1.5" PointX="6.75" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTTKHTModel.DonNhapHang" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTTKHTModel.DonTraHangCC" Width="1.5" PointX="3" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTTKHTModel.HangHoa" Width="1.5" PointX="6" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTTKHTModel.HoaDon" Width="1.5" PointX="6" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTTKHTModel.HopDong" Width="1.5" PointX="9" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTTKHTModel.KhachHang" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTTKHTModel.LoaiHoang" Width="1.5" PointX="3.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTTKHTModel.NhaCungCap" Width="1.5" PointX="3.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTTKHTModel.NhanVien" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTTKHTModel.ThanhToan" Width="1.5" PointX="3.75" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTTKHTModel.TinNhan" Width="1.5" PointX="8.25" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="PTTKHTModel.FK_ChiTietDonNhapHang_IDDonNhap" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_ChiTietDonNhapHang_IDHangHoa" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_ChiTietDonTraHangNCC_IDDonTra" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_ChiTietDonTraHangNCC_IDHangHoa" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_ChiTietHoaDon_IDHangHoa" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_ChiTietHoaDon_IDHoaDon" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_ChiTietHoaDon_NguoiXacNhanTra" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_Comment_IDHangHoa" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_Comment_IDKhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_Comment_NhanVienDanhGia" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_HopDong_IDDoiTac" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_DonNhapHang_NCC" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_DonNhapHang_NguoiLap" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_DonNhapHang_NguoiXacNhan" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_DonTraHangCC_Nguoilap" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_DonTraHangCC_NguoiXacNhap" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_DonTraHangCC_NhaCC" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_HangHoa_LoaiHang" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_HangHoa_NCC" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_HangHoa_QuanLY" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_TinNhan_IDHangHoa" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_HoaDon_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_HoaDon_NguoiLap" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_HoaDon_NguoiXacNhan" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_HoaDon_ThanhToan" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_HopDong_NguoiLap" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_TinNhan_IDKhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="PTTKHTModel.FK_TinNhan_NguoiGui" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

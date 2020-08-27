@@ -1,0 +1,185 @@
+create database PTTKHT;
+use PTTKHT;
+
+
+---------- create table
+create table LoaiHoang(
+	ID int  identity primary key,
+	TenLoai nvarchar(max),
+
+);
+
+create table HangHoa(
+	ID int identity primary key,
+	TenHH nvarchar(max),
+	NhapMax int,
+	SLmin int,
+	NCC int not null,--fk
+	QuanLy int not null,
+	SoLuongTra int default 0,
+	SoLuongTon int default 0,
+	LoaiHang int not null,
+	DonGia float
+	
+);
+
+create table NhaCungCap(
+	ID int identity primary key,
+	TenNCC nvarchar(max)
+);
+
+create table NhanVien(
+	ID int identity primary key,
+	Email nvarchar(max) ,
+	HoTen nvarchar(max),
+	SoDT nvarchar(100),
+	ChucVu nvarchar(max) check (ChucVu=N'QuanLy' or ChucVu=N'NhanVien' or ChucVu=N'Shipper'),
+	DiaChi nvarchar(max),
+	Password varchar(100) default '12345'
+);
+
+create table DonNhapHang(
+	ID int identity primary key,
+	NgayLap datetime default getdate(),
+	LyDo nvarchar(max),
+	NguoiLap int not null,-- fk
+	NguoiXacNhan int,--fk
+	NgayXacNhan  datetime,
+	NCC int
+);
+
+create table ChiTietDonNhapHang(
+	IDDonNhap int not null,
+	IDHangHoa int not null,
+	primary key(IDDonNhap,IDHangHoa),
+	SoLuong int not null,
+	DonGia float
+);
+
+create table DonTraHangCC(
+	ID int identity primary key,
+	NgayLap datetime default getdate(),
+	Nguoilap int not null, --fk
+	NhaCC int not null, --fk
+	NguoiXacNhap int, -- fk
+	NgayXacNhan datetime,
+        LyDo nvarchar(max);
+);
+
+create table ChiTietDonTraHangNCC(
+	IDDonTra int not null,
+	IDHangHoa int not null,
+	primary key(IDDonTra,IDHangHoa),
+	SoLuong int not null
+);
+
+create table KhachHang(
+	ID int identity primary key,
+	Email nvarchar(max),
+	HoTen nvarchar(max),
+	SoDT nvarchar(100),
+	DiaChi nvarchar(max),
+	Password varchar(100) default '12345'
+);
+
+create table Comment(
+	ID int identity primary key,
+	IDHangHoa int not null,
+	IDKhachHang int not null,
+	Ngay datetime default getdate() not null,
+	NoiDung nvarchar(max),
+	DanhGia bit,
+	NhanVienDanhGia int,--fk
+	NgayDanhGia datetime
+);
+
+create table TinNhan(
+	IDHangHoa int not null,
+	IDKhachHang int not null,
+	Ngay datetime not null default getdate(),
+	primary key(IDHangHoa,IDKhachHang,Ngay),
+	NoiDung nvarchar(max),
+	NguoiGui int,--fk
+);
+
+create table DoiTacQuangCao(
+	ID int identity primary key,
+	TenDoiTac nvarchar(max)
+);
+
+create table HopDong(
+	ID int identity primary key,
+	NguoiLap int not null,
+	NgayLap date default getdate(),
+	NgayKetThuc date not null,
+	ViTriDang nvarchar(max),
+	IDDoiTac int not null, --fk
+);
+create table  ThanhToan(
+	ID int identity primary key,
+	TenThanhToan nvarchar(max)
+);
+create table HoaDon (
+	ID int identity primary key,
+	KhachHang int,--fk
+	NguoiLap int,--fk
+	ThanhToan int,--fk
+	NguoiXacNhan int, --fk
+	NgayXacNhan datetime,
+	TongTien float
+);
+
+create table ChiTietHoaDon(
+	IDHoaDon int not null,
+	IDHangHoa int not null,
+	primary key(IDHoaDon,IDHangHoa),
+	SoLuong int,
+	SLTra int,
+	NguoiXacNhanTra int, --fk
+	NgayXacNhanTra datetime 
+);
+
+
+------- Foreign Key
+
+alter table HangHoa add constraint FK_HangHoa_LoaiHang  foreign key(LoaiHang ) references LoaiHoang(ID);
+alter table HangHoa add constraint FK_HangHoa_QuanLY  foreign key(QuanLy  ) references NhanVien(ID);
+alter table HangHoa add constraint FK_HangHoa_NCC  foreign key(NCC   ) references NhaCungCap(ID);
+
+
+alter table DonNhapHang add constraint FK_DonNhapHang_NguoiLap foreign key(NguoiLap) references NhanVien(ID);
+alter table DonNhapHang add constraint FK_DonNhapHang_NguoiXacNhan foreign key(NguoiXacNhan) references NhanVien(ID);
+alter table DonNhapHang add constraint FK_DonNhapHang_NCC  foreign key(NCC ) references NhaCungCap(ID);
+
+alter table ChiTietDonNhapHang add constraint FK_ChiTietDonNhapHang_IDDonNhap   foreign key(IDDonNhap  ) references DonNhapHang(ID);
+alter table ChiTietDonNhapHang add constraint FK_ChiTietDonNhapHang_IDHangHoa    foreign key(IDHangHoa   ) references HangHoa(ID);
+
+alter table DonTraHangCC add constraint FK_DonTraHangCC_Nguoilap     foreign key(Nguoilap    ) references NhanVien(ID);
+alter table DonTraHangCC add constraint FK_DonTraHangCC_NguoiXacNhap   foreign key(NguoiXacNhap) references NhanVien(ID);
+alter table DonTraHangCC add constraint FK_DonTraHangCC_NhaCC   foreign key(NhaCC) references NhaCungCap(ID);
+
+alter table ChiTietDonTraHangNCC add constraint FK_ChiTietDonTraHangNCC_IDDonTra   foreign key(IDDonTra ) references DonTraHangCC(ID);
+alter table ChiTietDonTraHangNCC add constraint FK_ChiTietDonTraHangNCC_IDHangHoa   foreign key(IDHangHoa ) references HangHoa(ID);
+
+alter table Comment add constraint FK_Comment_IDHangHoa   foreign key(IDHangHoa ) references HangHoa(ID);
+alter table Comment add constraint FK_Comment_IDKhachHang   foreign key(IDKhachHang ) references KhachHang(ID);
+alter table Comment add constraint FK_Comment_NhanVienDanhGia   foreign key(NhanVienDanhGia) references NhanVien(ID);
+
+
+alter table TinNhan add constraint FK_TinNhan_IDHangHoa   foreign key(IDHangHoa) references HangHoa(ID);
+alter table TinNhan add constraint FK_TinNhan_IDKhachHang   foreign key(IDKhachHang) references KhachHang(ID);
+alter table TinNhan add constraint FK_TinNhan_NguoiGui   foreign key(NguoiGui) references NhanVien(ID);
+
+alter table HopDong add constraint FK_HopDong_NguoiLap   foreign key(NguoiLap) references NhanVien(ID);
+alter table HopDong add constraint FK_HopDong_IDDoiTac   foreign key(IDDoiTac) references DoiTacQuangCao(ID);
+
+
+alter table HoaDon  add constraint FK_HoaDon_KhachHang   foreign key(KhachHang) references KhachHang(ID);
+alter table HoaDon  add constraint FK_HoaDon_NguoiLap   foreign key(NguoiLap) references NhanVien(ID);
+alter table HoaDon  add constraint FK_HoaDon_NguoiXacNhan   foreign key(NguoiXacNhan) references NhanVien(ID);
+alter table HoaDon  add constraint FK_HoaDon_ThanhToan   foreign key(ThanhToan) references ThanhToan(ID);
+
+alter table ChiTietHoaDon  add constraint FK_ChiTietHoaDon_IDHoaDon   foreign key(IDHoaDon) references HoaDon(ID);
+alter table ChiTietHoaDon  add constraint FK_ChiTietHoaDon_IDHangHoa   foreign key(IDHangHoa ) references HangHoa(ID);
+alter table ChiTietHoaDon  add constraint FK_ChiTietHoaDon_NguoiXacNhanTra   foreign key(NguoiXacNhanTra  ) references NhanVien(ID);
+

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTTKHT", "PTTKHT\PTTKHT.csproj", "{49C03919-A739-4477-8769-1647D216D75E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49C03919-A739-4477-8769-1647D216D75E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49C03919-A739-4477-8769-1647D216D75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49C03919-A739-4477-8769-1647D216D75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49C03919-A739-4477-8769-1647D216D75E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C1E0C448-F549-425E-8DC8-DCC191AD256D}
+	EndGlobalSection
+EndGlobal
